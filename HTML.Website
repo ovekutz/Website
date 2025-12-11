@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passwortgeschützte Seite</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .hidden { display: none; }
+        .container { margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div id="login" class="container">
+        <h2>Passwortgeschützte Seite</h2>
+        <label for="password">Gib das Passwort ein:</label>
+        <input type="password" id="password" />
+        <button onclick="checkPassword()">Einloggen</button>
+        <p id="message" class="hidden"></p>
+    </div>
+
+    <div id="content" class="hidden">
+        <h2>Willkommen auf der geschützten Seite!</h2>
+        <p>Dies ist die persönliche Website von Mir</p>
+	<P>Es kommt mir hier darauf an, euch abzuziehen!<p>
+    </div>
+
+    <script>
+        const correctPassword = "Hallo1234!"; // Passwort gesetzt auf "Hallo1234!"
+
+        function checkPassword() {
+            const passwordInput = document.getElementById("password").value;
+            const message = document.getElementById("message");
+            const loginDiv = document.getElementById("login");
+            const contentDiv = document.getElementById("content");
+
+            if (passwordInput === correctPassword) {
+                message.classList.add("hidden");
+                loginDiv.classList.add("hidden");
+                contentDiv.classList.remove("hidden");
+            } else {
+                message.textContent = "Falsches Passwort. Bitte versuche es erneut.";
+                message.classList.remove("hidden");
+            }
+        }
+    </script>
+
+</body>
+</html>
